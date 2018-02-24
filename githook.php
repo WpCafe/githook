@@ -35,18 +35,18 @@ function load_githook() {
 		return;
 	}
 
+	$options = get_option( 'githook_settings', [] );
+
 	/**
 	 * Filter allows changing default GitHook secret key.
 	 *
 	 * @return string
 	 * @since 1.0.0
 	 */
-	$secret = apply_filters( 'githook_secret', 'LObOneRMansiDBAThemE' );
-	$githook_token = apply_filters( 'githook_token', '' );
+	$secret = apply_filters( 'githook_secret', $options['webhook_secret'] );
 
 	// Define GitHook secret so that it can be used after this point.
 	define( 'GITHOOK_SECRET', $secret );
-	define( 'GITHOOK_TOKEN', $githook_token );
 
 	// Check secret key.
 	if ( empty( $_GET['secret'] ) || $_GET['secret'] !== $secret ) {
