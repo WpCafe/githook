@@ -21,11 +21,6 @@ $access_token = ! empty( $access_token ) ? '********' : '';
 
 <h1 class="wp-heading-inline"><?php esc_attr_e( 'GitHook Settings', 'githook' ); ?></h1>
 
-<div class="how-to">
-	<label><?php esc_attr_e( 'Webhook URL. Add this url to GitHub webhook url.', 'githook' ); ?></label>
-	<input class="webhook-url" onClick="this.setSelectionRange(0, this.value.length)" value="<?php echo esc_url( home_url( '/?githook_action=true&secret=' . $options['webhook_secret'] ) ); ?>" />
-</div>
-
 <form method="POST" action="<?php echo esc_url( admin_url( 'admin.php' ) ); ?>">
 	<table class="form-table">
 		<tbody>
@@ -72,6 +67,12 @@ $access_token = ! empty( $access_token ) ? '********' : '';
 	<input name="action" value="githook_settings" type="hidden" />
 	<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Save settings', 'githook' ); ?>">
 </form>
+
+<div class="how-to">
+	<label><?php esc_attr_e( 'Webhook URL. Add this url to GitHub payload url.', 'githook' ); ?></label>
+	<input class="webhook-url" onClick="this.setSelectionRange(0, this.value.length)" value="<?php echo esc_url( home_url( '/?githook_action=true&secret=' . $options['webhook_secret'] ) ); ?>" />
+	<p><?php esc_attr_e( 'Copy this only after adding webhook secret field.', 'githook' ); ?></p>
+</div>
 
 <script type="text/javascript">
 	(function($){
