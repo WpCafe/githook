@@ -106,6 +106,7 @@ class GitHook {
 	 * @return void
 	 */
 	public function process_webhook() {
+		@ini_set( 'allow_url_fopen', true );
 		$payload = file_get_contents( 'php://input' );
 
 		if ( self::validate_sign( $payload ) ) {
